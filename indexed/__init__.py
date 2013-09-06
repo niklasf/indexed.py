@@ -52,7 +52,7 @@ class IndexedOrderedDict(dict):
         iod.popitem() -> (k, v), return and remove a (key, value) pair.
         Pairs are returned LIFO order if last is true or FIFI order if false.
         """
-        key = self._map.pop(last)
+        key = self._map.pop() if last else self._map.pop(0)
         value = dict.pop(self, key)
         return key, value
 
