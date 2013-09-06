@@ -1,7 +1,11 @@
 import collections
 import operator
-import reprlib
 import sys
+
+try:
+    from reprlib import resursive_repr
+except ImportError:
+    from backports import recursive_repr
 
 class IndexedOrderedDict(dict):
     """A dictionary that is indexed by insertion order."""
@@ -104,7 +108,7 @@ class IndexedOrderedDict(dict):
         self[key] = default
         return default
 
-    @reprlib.recursive_repr()
+    @recursive_repr()
     def __repr__(self):
         """iod.__repr__() <==> repr(iod)"""
         if not self:
