@@ -93,6 +93,15 @@ class IndexedOrderedDictTestCase(unittest.TestCase):
 
         self.assertEqual(d.pop("hello", "default"), "default")
 
+    def testSetDefault(self):
+        d = indexed.IndexedOrderedDict()
+        d["a"] = "set"
+
+        self.assertEqual(d.setdefault("a", "not-set"), "set")
+        self.assertEqual(d.setdefault("b", "not-set"), "not-set")
+
+        self.assertEqual(d.setdefault("b", "still-not-set"), "not-set")
+
 
 class IndexedViewTestCase(unittest.TestCase):
     def setUp(self):
