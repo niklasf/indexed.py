@@ -83,6 +83,16 @@ class IndexedOrderedDictTestCase(unittest.TestCase):
 
         self.assertEqual(len(d), 3)
 
+    def testPop(self):
+        d = indexed.IndexedOrderedDict()
+        d["foo"] = "bar"
+
+        self.assertTrue("foo" in d)
+        self.assertEqual(d.pop("foo"), "bar")
+        self.assertFalse("foo" in d)
+
+        self.assertEqual(d.pop("hello", "default"), "default")
+
 
 class IndexedViewTestCase(unittest.TestCase):
     def setUp(self):
