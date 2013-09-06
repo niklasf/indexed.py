@@ -55,4 +55,9 @@ d.keys().index(x) O(n) [#v]_ O(n) [#v]_         O(n)     O(n)
         ``next(itertools.islice(d.keys(), i, i + 1))``.
 .. [#v] Assuming the theoretically best possible workaround.
 
+License
+-------
+indexed.py is licensed under the GPL3. See the LICENSE file for full copyright
+and license information.
+
 .. _amortized: http://en.wikipedia.org/wiki/Amortized_analysis
