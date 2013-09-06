@@ -31,8 +31,8 @@ class IndexedOrderedDict(dict):
 
     def __delitem__(self, key, dict_delitem=dict.__delitem__):
         """iod.__delitem__(y) <==> del iod[y]"""
-        dict__delitem(self, key)
-        self._map.pop(key)
+        dict_delitem(self, key)
+        self._map.remove(key)
 
     def __iter__(self):
         """iod.__iter__() <==> iter(iod)"""

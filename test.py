@@ -1,6 +1,20 @@
 import unittest
 import indexed
 
+class IndexedOrderedDictTestCase(unittest.TestCase):
+    def testDelItem(self):
+        d = indexed.IndexedOrderedDict()
+        keys = d.keys()
+
+        d["key-a"] = "a"
+        d["key-b"] = "b"
+        d["key-c"] = "c"
+
+        del d["key-a"]
+        self.assertFalse("key-a" in d)
+        self.assertEqual(keys.index("key-b"), 0)
+        self.assertEqual(keys.index("key-c"), 1)
+
 
 class IndexedViewTestCase(unittest.TestCase):
     def setUp(self):
