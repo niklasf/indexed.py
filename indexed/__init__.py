@@ -7,6 +7,7 @@ try:
 except ImportError:
     from backports import recursive_repr
 
+
 class IndexedOrderedDict(dict):
     """A dictionary that is indexed by insertion order."""
 
@@ -156,11 +157,13 @@ class IndexedKeysView(collections.KeysView):
     def index(self, x):
         return self._mapping._map.index(x)
 
+
 class IndexedValuesView(collections.ValuesView):
 
     def __getitem__(self, index):
         key = self._mapping._map[index]
         return self._mapping[key]
+
 
 class IndexedItemsView(collections.ItemsView):
 
