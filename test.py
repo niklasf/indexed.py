@@ -43,6 +43,17 @@ class IndexedOrderedDictTestCase(unittest.TestCase):
         self.assertEqual(len(d.valuesview()), 0)
         self.assertEqual(len(d.itemsview()), 0)
 
+    def testClear(self):
+        d = indexed.IndexedOrderedDict()
+
+        d["foo"] = "bar"
+        self.assertEqual(len(d), 1)
+        self.assertEqual(len(d.values()), 1)
+
+        d.clear()
+        self.assertEqual(len(d), 0)
+        self.assertEqual(len(d.values()), 0)
+
 
 class IndexedViewTestCase(unittest.TestCase):
     def setUp(self):
