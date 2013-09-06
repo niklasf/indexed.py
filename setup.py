@@ -36,7 +36,7 @@ distutils.core.setup(
     url="http://github.com/niklasf/indexed.py",
     packages=["indexed"],
     classifiers=[
-        "Development Status :: 2 - Pre Alpha",
+        "Development Status :: 2 - Pre-Alpha",
         "Intended Audience :: Developers",
         "License :: OSI Approved :: GNU General Public License (GPL)",
         "Operating System :: OS Independent",
