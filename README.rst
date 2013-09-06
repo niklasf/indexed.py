@@ -66,6 +66,10 @@ Excluding those additions the API is the same as the API of
 * Comparing order sensitively with other ordered dictionaries or order
   insensitively with standard mappings
 
+Requirements
+------------
+Python >= 2.7, >= 3.0
+
 Performance
 -----------
 
