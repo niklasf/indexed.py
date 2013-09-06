@@ -15,6 +15,18 @@ class IndexedOrderedDictTestCase(unittest.TestCase):
         self.assertEqual(keys.index("key-b"), 0)
         self.assertEqual(keys.index("key-c"), 1)
 
+    def testIter(self):
+        d = indexed.IndexedOrderedDict()
+
+        d[8] = "8"
+        d[5] = "5"
+        d[9] = "9"
+
+        it = d.__iter__()
+        self.assertEqual(next(it), 8)
+        self.assertEqual(next(it), 5)
+        self.assertEqual(next(it), 9)
+
 
 class IndexedViewTestCase(unittest.TestCase):
     def setUp(self):
