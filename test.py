@@ -1,6 +1,7 @@
 import unittest
 import indexed
 
+
 class IndexedOrderedDictTestCase(unittest.TestCase):
     def testDelItem(self):
         d = indexed.IndexedOrderedDict()
