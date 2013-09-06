@@ -10049,12 +10049,14 @@ def benchmark_index_access_itertools_workaround(d):
         else:
             assert words[i] == next(itertools.islice(d.values(), i, i + 1))
 
+
 def benchmark_index_access_listcopy_workaround(d):
     for i in range(0, 9999, 100):
         if sys.version_info < (3, 0):
             assert words[i] == d.values()[i]
         else:
             assert words[i] == list(d.values())[i]
+
 
 def benchmark_index_access(d):
     for i in range(0, 9999, 100):
@@ -10063,6 +10065,11 @@ def benchmark_index_access(d):
             assert words[i] == d.values()[i]
         else:
             assert words[i] == d.values()[i]
+
+
+def benchmark_remove_key(d):
+    for i in range(0, 9999, 100):
+        del d[words[i]]
 
 
 if __name__ == "__main__":
@@ -10116,3 +10123,15 @@ if __name__ == "__main__":
         stmt="benchmark_index_access(d)",
         setup="import indexed; from __main__ import benchmark_creation, benchmark_index_access; d = benchmark_creation(indexed.IndexedOrderedDict);",
         number=100))
+    print("")
+
+    print("Copy dict and remove a few items by key")
+    print("---------------------------------------")
+    print("collections.OrderedDict: %f" % timeit.timeit(
+        stmt="benchmark_remove_key(d.copy())",
+        setup="import collections; from __main__ import benchmark_creation, benchmark_remove_key; d = benchmark_creation(collections.OrderedDict);",
+        number=1000))
+    print("indexed.IndexedOrderedDict: %f" % timeit.timeit(
+        stmt="benchmark_remove_key(d.copy())",
+        setup="import indexed; from __main__ import benchmark_creation, benchmark_remove_key; d = benchmark_creation(indexed.IndexedOrderedDict);",
+        number=1000))
