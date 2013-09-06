@@ -161,6 +161,15 @@ class IndexedOrderedDictTestCase(unittest.TestCase):
 
         self.assertEqual(d, unpickled)
 
+    def testFromKeys(self):
+        d = indexed.IndexedOrderedDict.fromkeys({
+            "key-a": "a",
+            "key-b": "b",
+        }, "default-value")
+
+        self.assertEqual(d["key-a"], "default-value")
+        self.assertEqual(d["key-b"], "default-value")
+
 
 class IndexedViewTestCase(unittest.TestCase):
     def setUp(self):
