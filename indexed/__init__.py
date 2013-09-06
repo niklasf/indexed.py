@@ -44,7 +44,7 @@ class IndexedOrderedDict(dict):
 
     def clear(self):
         """iod.clear() -> None.  Remove all items from iod."""
-        self._map.clear()
+        self._map[:] = []
         dict.clear(self)
 
     def popitem(self, last=True):
