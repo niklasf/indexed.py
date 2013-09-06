@@ -17,6 +17,7 @@
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 import itertools
+import sys
 import timeit
 
 # Thanks to http://www.mit.edu/~ecprice/ for the worldlist!
@@ -10041,29 +10042,52 @@ def benchmark_shiftitem(d):
         d.popitem(False)
 
 
+def benchmark_index_access_itertools_workaround(d):
+    for i in range(0, 9999, 100):
+        if sys.version_info < (3, 0):
+            assert words[i] == next(itertools.islice(d.viewvalues(), i, i + 1))
+        else:
+            assert words[i] == next(itertools.islice(d.values(), i, i + 1))
+
+def benchmark_index_access_listcopy_workaround(d):
+    for i in range(0, 9999, 100):
+        if sys.version_info < (3, 0):
+            assert words[i] == d.values()[i]
+        else:
+            assert words[i] == list(d.values())[i]
+
+def benchmark_index_access(d):
+    for i in range(0, 9999, 100):
+        # Version check is not needed, but do it for fairness.
+        if sys.version_info < (3, 0):
+            assert words[i] == d.values()[i]
+        else:
+            assert words[i] == d.values()[i]
+
+
 if __name__ == "__main__":
     print("Creation")
     print("--------")
     print("collections.OrderedDict: %f" % timeit.timeit(
         stmt="benchmark_creation(collections.OrderedDict)",
         setup="import collections; from __main__ import benchmark_creation",
-        number=1000))
+        number=100))
     print("indexed.IndexedOrderedDict: %f" % timeit.timeit(
         stmt="benchmark_creation(indexed.IndexedOrderedDict)",
         setup="import indexed; from __main__ import benchmark_creation",
-        number=1000))
+        number=100))
     print("")
 
     print("Copy dict and pop items until empty")
-    print("---------------------")
+    print("-----------------------------------")
     print("collections.OrderedDict: %f" % timeit.timeit(
         stmt="benchmark_popitem(d.copy())",
         setup="import collections; from __main__ import benchmark_creation, benchmark_popitem; d = benchmark_creation(collections.OrderedDict);",
-        number=1000))
+        number=100))
     print("indexed.IndexedOrderedDict: %f" % timeit.timeit(
         stmt="benchmark_popitem(d.copy())",
         setup="import indexed; from __main__ import benchmark_creation, benchmark_popitem; d = benchmark_creation(indexed.IndexedOrderedDict);",
-        number=1000))
+        number=100))
     print("")
 
     print("Copy dict and shift items until empty")
@@ -10071,9 +10095,24 @@ if __name__ == "__main__":
     print("collections.OrderedDict: %f" % timeit.timeit(
         stmt="benchmark_shiftitem(d.copy())",
         setup="import collections; from __main__ import benchmark_creation, benchmark_shiftitem; d = benchmark_creation(collections.OrderedDict);",
-        number=1000))
+        number=100))
     print("indexed.IndexedOrderedDict: %f" % timeit.timeit(
         stmt="benchmark_shiftitem(d.copy())",
         setup="import indexed; from __main__ import benchmark_creation, benchmark_shiftitem; d = benchmark_creation(indexed.IndexedOrderedDict);",
-        number=1000))
+        number=100))
     print("")
+
+    print("Index access")
+    print("------------")
+    print("collections.OrderedDict itertools workaround: %f" % timeit.timeit(
+        stmt="benchmark_index_access_itertools_workaround(d)",
+        setup="import collections; from __main__ import benchmark_creation, benchmark_index_access_itertools_workaround; d = benchmark_creation(collections.OrderedDict);",
+        number=100))
+    print("collections.OrderedDict listcopy workaround: %f" % timeit.timeit(
+        stmt="benchmark_index_access_listcopy_workaround(d)",
+        setup="import collections; from __main__ import benchmark_creation, benchmark_index_access_listcopy_workaround; d = benchmark_creation(collections.OrderedDict);",
+        number=100))
+    print("indexed.IndexedOrderedDict: %f" % timeit.timeit(
+        stmt="benchmark_index_access(d)",
+        setup="import indexed; from __main__ import benchmark_creation, benchmark_index_access; d = benchmark_creation(indexed.IndexedOrderedDict);",
+        number=100))
