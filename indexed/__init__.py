@@ -150,7 +150,7 @@ class IndexedOrderedDict(dict):
         order-sensitive while comparison to a regular mapping is
         order-insensitive.
         """
-        if isinstance(other, OrderedDict) or isinstance(other, IndexedOrderedDict):
+        if isinstance(other, collections.OrderedDict) or isinstance(other, IndexedOrderedDict):
             return dict.__eq__(self, other) and all(map(operator.eq, self, other))
         return dict.__eq__(self, other)
 
