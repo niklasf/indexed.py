@@ -66,9 +66,28 @@ Excluding those additions the API is the same as the API of
 * Comparing order sensitively with other ordered dictionaries or order
   insensitively with standard mappings
 
-Requirements
-------------
-Python >= 2.7, >= 3.0
+Installing
+----------
+The only dependencies are Python >= 2.7 or Python >= 3.0.
+
+* With pip:
+
+  ::
+
+      sudo pip install indexed.py
+
+* With easy_install:
+
+  ::
+
+      sudo easy_install indexed.py
+
+* From current source code:
+
+  ::
+
+      python setup.py build
+      sudo python setup.py install
 
 Performance
 -----------
