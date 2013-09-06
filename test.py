@@ -108,6 +108,24 @@ class IndexedOrderedDictTestCase(unittest.TestCase):
         d["recursive"] = d
         self.assertEqual(d.__repr__(), "IndexedOrderedDict([('key', 'value'), ('recursive', ...)])")
 
+    def testEquality(self):
+        a = indexed.IndexedOrderedDict()
+        a["foo"] = "bar"
+        a["baz"] = "zab"
+
+        b = a.copy()
+
+        self.assertTrue(a == b)
+        self.assertFalse(a != b)
+
+        b["zip"] = "zap"
+
+        self.assertFalse(a == b)
+        self.assertTrue(a != b)
+
+        std_dict = { "foo": "bar", "baz": "zab" }
+        self.assertEqual(std_dict, a)
+
 
 class IndexedViewTestCase(unittest.TestCase):
     def setUp(self):
