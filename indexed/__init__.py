@@ -63,7 +63,7 @@ class IndexedOrderedDict(dict):
         Raises KeyError if the element does not exist.
         When last=True, acts like a faster version of self[key]=self.pop(key).
         """
-        key = self._map.pop(last)
+        self._map.remove(key)
         if last:
             self._map.append(key)
         else:

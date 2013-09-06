@@ -66,6 +66,23 @@ class IndexedOrderedDictTestCase(unittest.TestCase):
         self.assertEqual(len(d), 1)
         self.assertEqual(d["middle-key"], "middle")
 
+    def testMoveToEnd(self):
+        d = indexed.IndexedOrderedDict()
+        d["first-key"] = "first"
+        d["middle-key"] = "middle"
+        d["last-key"] = "last"
+
+        d.move_to_end("middle-key")
+        self.assertEqual(d.keys()[2], "middle-key")
+        self.assertEqual(d.values()[2], "middle")
+        self.assertEqual(d.keys()[1], "last-key")
+
+        d.move_to_end("last-key", False)
+        self.assertEqual(d.keys()[0], "last-key")
+        self.assertEqual(d.values()[0], "last")
+
+        self.assertEqual(len(d), 3)
+
 
 class IndexedViewTestCase(unittest.TestCase):
     def setUp(self):
