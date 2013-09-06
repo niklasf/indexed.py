@@ -3,7 +3,7 @@ import operator
 import sys
 
 try:
-    from reprlib import resursive_repr
+    from reprlib import recursive_repr
 except ImportError:
     from backports import recursive_repr
 
