@@ -102,6 +102,12 @@ class IndexedOrderedDictTestCase(unittest.TestCase):
 
         self.assertEqual(d.setdefault("b", "still-not-set"), "not-set")
 
+    def testRepr(self):
+        d = indexed.IndexedOrderedDict()
+        d["key"] = "value"
+        d["recursive"] = d
+        self.assertEqual(d.__repr__(), "IndexedOrderedDict([('key', 'value'), ('recursive', ...)])")
+
 
 class IndexedViewTestCase(unittest.TestCase):
     def setUp(self):
