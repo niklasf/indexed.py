@@ -70,13 +70,14 @@ class IndexedOrderedDict(dict):
     update = __update = collections.MutableMapping.update
     __ne__ = collections.MutableMapping.__ne__
 
-    items = collections.MutableMapping.items # TODO: Investigate
-
     def keys(self):
         return IndexedKeysView(self)
 
     def values(self):
         return IndexedValuesView(self)
+
+    def items(self):
+        return IndexedItemsView(self)
 
     __marker = object()
 
@@ -153,3 +154,9 @@ class IndexedValuesView(collections.ValuesView):
     def __getitem__(self, index):
         key = self._mapping._map[index]
         return self._mapping[key]
+
+class IndexedItemsView(collections.ItemsView):
+
+    def __getitem__(self, index):
+        key = self._mapping._map[index]
+        return key, self._mapping[key]
