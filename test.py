@@ -1,6 +1,7 @@
 import unittest
 import indexed
 
+
 class IndexedViewTestCase(unittest.TestCase):
     def setUp(self):
         self.d = indexed.IndexedOrderedDict()
@@ -14,8 +15,11 @@ class IndexedViewTestCase(unittest.TestCase):
     def testKeysView(self):
         keys = self.d.keys()
         self.assertEqual(len(keys), 6)
+
         self.assertEqual(keys[0], "key-zero")
         self.assertEqual(keys[4], "key-four")
+
+        self.assertEqual(keys.index("key-two"), 2)
 
     def testValuesView(self):
         values = self.d.values()
@@ -28,6 +32,7 @@ class IndexedViewTestCase(unittest.TestCase):
         self.assertEqual(len(items), 6)
         self.assertEqual(items[4], ("key-four", "four"))
         self.assertEqual(items[5], ("key-five", "five"))
+
 
 if __name__ == "__main__":
     unittest.main()

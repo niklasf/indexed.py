@@ -149,6 +149,9 @@ class IndexedKeysView(collections.KeysView):
     def __getitem__(self, index):
         return self._mapping._map[index]
 
+    def index(self, x):
+        return self._mapping._map.index(x)
+
 class IndexedValuesView(collections.ValuesView):
 
     def __getitem__(self, index):
