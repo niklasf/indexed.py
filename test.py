@@ -1,5 +1,6 @@
 import unittest
 import indexed
+import pickle
 
 
 class IndexedOrderedDictTestCase(unittest.TestCase):
@@ -130,6 +131,16 @@ class IndexedOrderedDictTestCase(unittest.TestCase):
         reordered_a = a.copy()
         reordered_a.move_to_end("foo")
         self.assertNotEqual(a, reordered_a)
+
+    def testPickle(self):
+        d = indexed.IndexedOrderedDict()
+        d["foo"] = "bar"
+        d["bar"] = "baz"
+
+        pickled = pickle.dumps(d)
+        unpickled = pickle.loads(pickled)
+
+        self.assertEqual(d, unpickled)
 
 
 class IndexedViewTestCase(unittest.TestCase):
