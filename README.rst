@@ -24,42 +24,42 @@ elements by their index.
 Features
 --------
 
- * Can be used with both Python 2 and 3. Provides ``keysview()``,
-   ``valuesview()`` and ``itemsview()`` which were removed from Python 3 for
-   compability.
+* Can be used with both Python 2 and 3. Provides ``keysview()``,
+  ``valuesview()`` and ``itemsview()`` which were removed from Python 3 for
+  compability.
 
- * Access keys, values and items by index, e.g. ``d.keys()[5]``.
+* Access keys, values and items by index, e.g. ``d.keys()[5]``.
 
- * Find the index of a key, e.g. ``d.keys().index("key")``.
+* Find the index of a key, e.g. ``d.keys().index("key")``.
 
 Excluding those additions the API is the same as the API of
 ``collections.OrderedDict()``. Including:
 
- * Initializing, setting, getting and deleting items
+* Initializing, setting, getting and deleting items
 
- * Iterating forwards and in reverse
+* Iterating forwards and in reverse
 
- * ``d.clear()``
+* ``d.clear()``
 
- * ``d.popitem(last=True)``
+* ``d.popitem(last=True)``
 
- * ``d.move_to_end(key, last=True)``
+* ``d.move_to_end(key, last=True)``
 
- * ``d.keys()``, ``d.values()``, ``d.items()``
+* ``d.keys()``, ``d.values()``, ``d.items()``
 
- * ``d.pop(key[, default])``
+* ``d.pop(key[, default])``
 
- * ``d.setdefault(key, default=None)``
+* ``d.setdefault(key, default=None)``
 
- * String representation
+* String representation
 
- * Pickling
+* Pickling
 
- * Copying
+* Copying
 
- * Creating from keys
+* Creating from keys
 
- * Comparing order sensitively with other ordered dictionaries or order
+* Comparing order sensitively with other ordered dictionaries or order
    insensitively with standard mappings
 
 Performance
