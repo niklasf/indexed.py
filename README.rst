@@ -4,9 +4,10 @@ indexed.py: a dictionary that is indexed by insertion order
 Introduction
 ------------
 
-`indexed.IndexedOrderedDict` is fully compatible with `collections.OrderedDict`
-and can be used as a drop in replacement. The main difference is that key,
-value and item views support accessing elements by their index.
+``indexed.IndexedOrderedDict`` is fully compatible with
+``collections.OrderedDict`` and can be used as a drop in replacement.
+The main difference is that key, value and item views support accessing
+elements by their index.
 
 ::
 
@@ -24,12 +25,12 @@ Performance
 -----------
 
 Performance is practically on the same order of magnitude as the built in
-`collections.OrderedDict`.
+``collections.OrderedDict``.
 
-============= ============================= ============================
-              `collections.OrderedDict` `indexed.IndexedOrderedDict`
-============= ============================= ============================
-a             b                             c
-------------- ----------------------------- ----------------------------
-d             e                             f
-============= ============================= ============================
+============= =========================== ==============================
+              ``collections.OrderedDict`` ``indexed.IndexedOrderedDict``
+============= =========================== ==============================
+a             b                           c
+------------- --------------------------- ------------------------------
+d             e                           f
+============= =========================== ==============================
