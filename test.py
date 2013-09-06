@@ -2,7 +2,7 @@ import unittest
 import indexed
 
 class IndexedKeysViewTest(unittest.TestCase):
-    def testGetItem(self):
+    def test(self):
         d = indexed.IndexedOrderedDict()
         d["key-zero"] = "zero"
         d["key-one"] = "one"
@@ -13,6 +13,8 @@ class IndexedKeysViewTest(unittest.TestCase):
 
         keys = d.keys()
         self.assertEqual(len(keys), 6)
+        self.assertEqual(keys[0], "key-zero")
+        self.assertEqual(keys[4], "key-four")
 
 if __name__ == "__main__":
     unittest.main()
