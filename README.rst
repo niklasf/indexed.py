@@ -1,6 +1,8 @@
 indexed.py: a dictionary that is indexed by insertion order
 ===========================================================
 
+.. image:: https://travis-ci.org/niklasf/indexed.py.png
+
 Introduction
 ------------
 
