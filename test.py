@@ -126,6 +126,10 @@ class IndexedOrderedDictTestCase(unittest.TestCase):
         std_dict = { "foo": "bar", "baz": "zab" }
         self.assertEqual(std_dict, a)
 
+        reordered_a = a.copy()
+        reordered_a.move_to_end("foo")
+        self.assertNotEqual(a, reordered_a)
+
 
 class IndexedViewTestCase(unittest.TestCase):
     def setUp(self):
