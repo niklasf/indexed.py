@@ -60,7 +60,7 @@ Excluding those additions the API is the same as the API of
 * Creating from keys
 
 * Comparing order sensitively with other ordered dictionaries or order
-   insensitively with standard mappings
+  insensitively with standard mappings
 
 Performance
 -----------
