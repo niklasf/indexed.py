@@ -27,6 +27,16 @@ class IndexedOrderedDictTestCase(unittest.TestCase):
         self.assertEqual(next(it), 5)
         self.assertEqual(next(it), 9)
 
+    def testReversed(self):
+        d = indexed.IndexedOrderedDict()
+
+        d["a"] = "b"
+        d["b"] = "a"
+
+        it = d.__reversed__()
+        self.assertEqual(next(it), "b")
+        self.assertEqual(next(it), "a")
+
     def testCompability(self):
         d = indexed.IndexedOrderedDict()
         self.assertEqual(len(d.keysview()), 0)
