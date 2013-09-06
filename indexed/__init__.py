@@ -78,11 +78,17 @@ class IndexedOrderedDict(dict):
     def keys(self):
         return IndexedKeysView(self)
 
+    keysview = keys
+
     def values(self):
         return IndexedValuesView(self)
 
+    valuesview = values
+
     def items(self):
         return IndexedItemsView(self)
+
+    itemsview = items
 
     __marker = object()
 

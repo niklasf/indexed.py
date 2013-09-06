@@ -27,6 +27,12 @@ class IndexedOrderedDictTestCase(unittest.TestCase):
         self.assertEqual(next(it), 5)
         self.assertEqual(next(it), 9)
 
+    def testCompability(self):
+        d = indexed.IndexedOrderedDict()
+        self.assertEqual(len(d.keysview()), 0)
+        self.assertEqual(len(d.valuesview()), 0)
+        self.assertEqual(len(d.itemsview()), 0)
+
 
 class IndexedViewTestCase(unittest.TestCase):
     def setUp(self):
