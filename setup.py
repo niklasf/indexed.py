@@ -20,7 +20,7 @@ setuptools.setup(
     url="http://github.com/niklasf/indexed.py",
     packages=["indexed"],
     test_suite="test",
-    python_required=">=3.2",
+    python_required=">=3.4",
     classifiers=[
         "Development Status :: 5 - Production/Stable",
         "Intended Audience :: Developers",

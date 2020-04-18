@@ -65,18 +65,10 @@ Excluding those additions the API is the same as the API of
 Installing
 ----------
 
-* With pip:
+::
 
-  ::
+    pip install indexed.py
 
-      pip install indexed.py
-
-* From current source code:
-
-  ::
-
-      python setup.py build
-      sudo python setup.py install
 
 Performance
 -----------
