@@ -121,7 +121,7 @@ class IndexedOrderedDictTestCase(unittest.TestCase):
         self.assertFalse(a == b)
         self.assertTrue(a != b)
 
-        std_dict = { "foo": "bar", "baz": "zab" }
+        std_dict = {"foo": "bar", "baz": "zab"}
         self.assertEqual(std_dict, a)
 
         reordered_a = a.copy()

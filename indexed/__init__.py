@@ -8,7 +8,6 @@ __license__ = "PSFL"
 import collections
 import operator
 import reprlib
-import sys
 
 
 class IndexedOrderedDict(dict):

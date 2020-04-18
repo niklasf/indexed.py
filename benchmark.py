@@ -10018,7 +10018,7 @@ def benchmark_creation(dicttype):
 
 def benchmark_popitem(d):
     while d:
-       d.popitem()
+        d.popitem()
 
 
 def benchmark_shiftitem(d):
