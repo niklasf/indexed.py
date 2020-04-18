@@ -1,5 +1,5 @@
-indexed.py: a dictionary that is indexed by insertion order
-===========================================================
+indexed.IndexedOrderedDict: a dictionary that is indexed by insertion order
+===========================================================================
 
 .. image:: https://travis-ci.org/niklasf/indexed.py.png?branch=master
     :target: https://travis-ci.org/niklasf/indexed.py
@@ -67,7 +67,7 @@ Installing
 
 ::
 
-    pip install indexed.py
+    pip install indexed
 
 
 Performance
@@ -107,7 +107,8 @@ d.keys().index(x) O(n) [#v]_ O(n) [#v]_         O(n)     O(n)
 License
 -------
 
-indexed.py is derived from CPython's OrderedDict and licensed under the PSFL.
+This library is derived from CPython's ``collections.OrderedDict``
+and licensed under the PSFL.
 See the LICENSE file for the full license text.
 
 .. _amortized: http://en.wikipedia.org/wiki/Amortized_analysis

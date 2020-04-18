@@ -9,7 +9,7 @@ def read(filename):
         return f.read()
 
 setuptools.setup(
-    name="indexed.py",
+    name="indexed",
     version="1.0.0",
     author="Niklas Fiekas",
     author_email="niklas.fiekas@backscattering.de",
