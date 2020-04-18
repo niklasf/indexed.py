@@ -1,36 +1,14 @@
-# -*- coding: utf-8 -*-
-#
-# indexed.py provides a dictionary that is indexed by insertion order.
-# Copyright (c) 2013 Niklas Fiekas <niklas.fiekas@tu-clausthal.de>
-#
-# This program is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-#
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with this program. If not, see <http://www.gnu.org/licenses/>.
+"""Provides a dictionary that is indexed by insertion order."""
 
 __author__ = "Niklas Fiekas"
-__copyright__ = "Copyright 2013, Niklas Fiekas"
-__license__ = "GPL"
-__version__ = "0.0.1"
-__email__ = "niklas.fiekas@tu-clausthal.de"
-__status__ = "Development"
+__email__ = "niklas.fiekas@backscattering.de"
+__version__ = "1.0.0"
+__license__ = "PSFL"
 
 import collections
 import operator
+import reprlib
 import sys
-
-try:
-    from reprlib import recursive_repr
-except ImportError:
-    from backports import recursive_repr
 
 
 class IndexedOrderedDict(dict):
@@ -39,8 +17,7 @@ class IndexedOrderedDict(dict):
     def __init__(self, *args, **kwds):
         """
         Initialize an ordered dictionary.  The signature is the same as
-        regular dictioneries, but keywords arguments are not recommended because
-        their insertion order is arbitrary.
+        regular dictionaries.  Keyword argument order is preserved.
         """
         if len(args) > 1:
             raise TypeError('expected at most 1 arguments, got %d' % len(args))
@@ -69,7 +46,7 @@ class IndexedOrderedDict(dict):
 
     def clear(self):
         """iod.clear() -> None.  Remove all items from iod."""
-        self._map[:] = []
+        self._map.clear()
         dict.clear(self)
 
     def popitem(self, last=True):
@@ -94,26 +71,17 @@ class IndexedOrderedDict(dict):
         else:
             self._map.insert(0, key)
 
-    def __sizeof__(self):
-        return sys.getsizeof(self.__dict__) + sys.getsizeof(self._map)
-
     update = __update = collections.MutableMapping.update
     __ne__ = collections.MutableMapping.__ne__
 
     def keys(self):
         return IndexedKeysView(self)
 
-    keysview = keys
-
     def values(self):
         return IndexedValuesView(self)
 
-    valuesview = values
-
     def items(self):
         return IndexedItemsView(self)
-
-    itemsview = items
 
     __marker = object()
 
@@ -140,7 +108,7 @@ class IndexedOrderedDict(dict):
         self[key] = default
         return default
 
-    @recursive_repr()
+    @reprlib.recursive_repr()
     def __repr__(self):
         """iod.__repr__() <==> repr(iod)"""
         if not self:

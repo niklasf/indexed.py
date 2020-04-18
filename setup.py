@@ -1,46 +1,33 @@
 #!/usr/bin/env python
-# -*- coding: utf-8 -*-
-#
-# indexed.py provides a dictionary that is indexed by insertion order.
-# Copyright (c) 2013 Niklas Fiekas <niklas.fiekas@tu-clausthal.de>
-#
-# This program is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-#
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with this program. If not, see <http://www.gnu.org/licenses/>.
 
-import distutils.core
 import os
+import setuptools
 
 
 def read(filename):
-    """Utility function that returns a files contents."""
-    return open(os.path.join(os.path.dirname(__file__), filename)).read()
+    with open(os.path.join(os.path.dirname(__file__), filename)) as f:
+        return f.read()
 
-distutils.core.setup(
+setuptools.setup(
     name="indexed.py",
-    version="0.0.1",
+    version="1.0.0",
     author="Niklas Fiekas",
-    author_email="niklas.fiekas@tu-clausthal.de",
+    author_email="niklas.fiekas@backscattering.de",
     description="A dictionary that is indexed by insertion order.",
     long_description=read("README.rst"),
-    license="GPL3",
+    long_description_content_type="text/x-rst",
+    license="PSFL",
     url="http://github.com/niklasf/indexed.py",
     packages=["indexed"],
+    test_suite="test",
+    python_required=">=3.2",
     classifiers=[
-        "Development Status :: 2 - Pre-Alpha",
+        "Development Status :: 5 - Production/Stable",
         "Intended Audience :: Developers",
-        "License :: OSI Approved :: GNU General Public License (GPL)",
+        "License :: OSI Approved :: Python Software Foundation License",
         "Operating System :: OS Independent",
         "Programming Language :: Python",
+        "Programming Language :: Python :: 3",
         "Topic :: Software Development :: Libraries :: Python Modules",
     ],
 )

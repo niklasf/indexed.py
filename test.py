@@ -1,21 +1,4 @@
 #!/usr/bin/env python
-# -*- coding: utf-8 -*-
-#
-# indexed.py provides a dictionary that is indexed by insertion order.
-# Copyright (c) 2013 Niklas Fiekas <niklas.fiekas@tu-clausthal.de>
-#
-# This program is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-#
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 import unittest
 import indexed
@@ -23,7 +6,7 @@ import pickle
 
 
 class IndexedOrderedDictTestCase(unittest.TestCase):
-    def testDelItem(self):
+    def test_del_item(self):
         d = indexed.IndexedOrderedDict()
         keys = d.keys()
 
@@ -36,7 +19,7 @@ class IndexedOrderedDictTestCase(unittest.TestCase):
         self.assertEqual(keys.index("key-b"), 0)
         self.assertEqual(keys.index("key-c"), 1)
 
-    def testIter(self):
+    def test_iter(self):
         d = indexed.IndexedOrderedDict()
 
         d[8] = "8"
@@ -48,7 +31,7 @@ class IndexedOrderedDictTestCase(unittest.TestCase):
         self.assertEqual(next(it), 5)
         self.assertEqual(next(it), 9)
 
-    def testReversed(self):
+    def test_reversed(self):
         d = indexed.IndexedOrderedDict()
 
         d["a"] = "b"
@@ -58,13 +41,7 @@ class IndexedOrderedDictTestCase(unittest.TestCase):
         self.assertEqual(next(it), "b")
         self.assertEqual(next(it), "a")
 
-    def testCompability(self):
-        d = indexed.IndexedOrderedDict()
-        self.assertEqual(len(d.keysview()), 0)
-        self.assertEqual(len(d.valuesview()), 0)
-        self.assertEqual(len(d.itemsview()), 0)
-
-    def testClear(self):
+    def test_clear(self):
         d = indexed.IndexedOrderedDict()
 
         d["foo"] = "bar"
@@ -75,7 +52,7 @@ class IndexedOrderedDictTestCase(unittest.TestCase):
         self.assertEqual(len(d), 0)
         self.assertEqual(len(d.values()), 0)
 
-    def testPopitem(self):
+    def test_popitem(self):
         d = indexed.IndexedOrderedDict()
         d["first-key"] = "first"
         d["middle-key"] = "middle"
@@ -87,7 +64,7 @@ class IndexedOrderedDictTestCase(unittest.TestCase):
         self.assertEqual(len(d), 1)
         self.assertEqual(d["middle-key"], "middle")
 
-    def testMoveToEnd(self):
+    def test_move_to_end(self):
         d = indexed.IndexedOrderedDict()
         d["first-key"] = "first"
         d["middle-key"] = "middle"
@@ -104,7 +81,7 @@ class IndexedOrderedDictTestCase(unittest.TestCase):
 
         self.assertEqual(len(d), 3)
 
-    def testPop(self):
+    def test_pop(self):
         d = indexed.IndexedOrderedDict()
         d["foo"] = "bar"
 
@@ -114,7 +91,7 @@ class IndexedOrderedDictTestCase(unittest.TestCase):
 
         self.assertEqual(d.pop("hello", "default"), "default")
 
-    def testSetDefault(self):
+    def test_set_default(self):
         d = indexed.IndexedOrderedDict()
         d["a"] = "set"
 
@@ -123,13 +100,13 @@ class IndexedOrderedDictTestCase(unittest.TestCase):
 
         self.assertEqual(d.setdefault("b", "still-not-set"), "not-set")
 
-    def testRepr(self):
+    def test_repr(self):
         d = indexed.IndexedOrderedDict()
         d["key"] = "value"
         d["recursive"] = d
         self.assertEqual(d.__repr__(), "IndexedOrderedDict([('key', 'value'), ('recursive', ...)])")
 
-    def testEquality(self):
+    def test_equality(self):
         a = indexed.IndexedOrderedDict()
         a["foo"] = "bar"
         a["baz"] = "zab"
@@ -151,7 +128,7 @@ class IndexedOrderedDictTestCase(unittest.TestCase):
         reordered_a.move_to_end("foo")
         self.assertNotEqual(a, reordered_a)
 
-    def testPickle(self):
+    def test_pickle(self):
         d = indexed.IndexedOrderedDict()
         d["foo"] = "bar"
         d["bar"] = "baz"
@@ -161,7 +138,7 @@ class IndexedOrderedDictTestCase(unittest.TestCase):
 
         self.assertEqual(d, unpickled)
 
-    def testFromKeys(self):
+    def test_from_keys(self):
         d = indexed.IndexedOrderedDict.fromkeys({
             "key-a": "a",
             "key-b": "b",
@@ -181,7 +158,7 @@ class IndexedViewTestCase(unittest.TestCase):
         self.d["key-four"] = "four"
         self.d["key-five"] = "five"
 
-    def testKeysView(self):
+    def test_keys_view(self):
         keys = self.d.keys()
         self.assertEqual(len(keys), 6)
 
@@ -190,13 +167,13 @@ class IndexedViewTestCase(unittest.TestCase):
 
         self.assertEqual(keys.index("key-two"), 2)
 
-    def testValuesView(self):
+    def test_values_view(self):
         values = self.d.values()
         self.assertEqual(len(values), 6)
         self.assertEqual(values[1], "one")
         self.assertEqual(values[3], "three")
 
-    def testItemsView(self):
+    def test_items_view(self):
         items = self.d.items()
         self.assertEqual(len(items), 6)
         self.assertEqual(items[4], ("key-four", "four"))

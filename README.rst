@@ -28,10 +28,6 @@ elements by their index.
 Features
 --------
 
-* Can be used with both Python 2 and 3. Provides ``keysview()``,
-  ``valuesview()`` and ``itemsview()`` which were removed from Python 3 for
-  compability.
-
 * Access keys, values and items by index, e.g. ``d.keys()[5]``.
 
 * Find the index of a key, e.g. ``d.keys().index("key")``.
@@ -64,23 +60,16 @@ Excluding those additions the API is the same as the API of
 * Creating from keys
 
 * Comparing order sensitively with other ordered dictionaries or order
-  insensitively with standard mappings
+  insensitively with other mappings
 
 Installing
 ----------
-The only dependencies are Python >= 2.7 or Python >= 3.0.
 
 * With pip:
 
   ::
 
-      sudo pip install indexed.py
-
-* With easy_install:
-
-  ::
-
-      sudo easy_install indexed.py
+      pip install indexed.py
 
 * From current source code:
 
@@ -93,7 +82,7 @@ Performance
 -----------
 
 Performance is practically on the same order of magnitude as the built in
-``collections.OrderedDict``.
+``collections.OrderedDict``, with exceptions in bold:
 
 ================= ========== ================== ======== ======================
 d                 ``collections.OrderedDict``   ``indexed.IndexedOrderedDict``
@@ -125,7 +114,8 @@ d.keys().index(x) O(n) [#v]_ O(n) [#v]_         O(n)     O(n)
 
 License
 -------
-indexed.py is licensed under the GPL3. See the LICENSE file for full copyright
-and license information.
+
+indexed.py is derived from CPython's OrderedDict and licensed under the PSFL.
+See the LICENSE file for the full license text.
 
 .. _amortized: http://en.wikipedia.org/wiki/Amortized_analysis
