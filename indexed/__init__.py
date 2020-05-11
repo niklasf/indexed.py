@@ -147,6 +147,9 @@ class IndexedOrderedDict(dict):
         return dict.__eq__(self, other)
 
 
+Dict = IndexedOrderedDict
+
+
 class IndexedKeysView(collections.KeysView):
 
     def __getitem__(self, index):
