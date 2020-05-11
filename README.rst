@@ -17,7 +17,7 @@ with ``collections.OrderedDict`` and can be used as a drop in replacement.
 The main difference is that key, value and item views support accessing
 elements by their index.
 
-::
+.. code-block:: python
 
     d = indexed.IndexedOrderedDict()
     d["first-key"] = "first-value"
@@ -32,16 +32,16 @@ elements by their index.
 Features
 --------
 
-* Access keys, values and items by index, e.g. ``d.keys()[5]``.
+* Access keys, values and items by index, e.g., ``d.keys()[5]``.
 
-* Find the index of a key, e.g. ``d.keys().index("key")``.
+* Find the index of a key, e.g., ``d.keys().index("key")``.
 
-* Sort keys in place, e.g. ``d.sort()``.
+* Sort keys in place, e.g., ``d.sort()``.
 
 Excluding those additions the API is the same as the API of
 ``collections.OrderedDict()``. Including:
 
-* Initializing, setting, getting and deleting items
+* Initialization, setting, getting and deleting items
 
 * Iterating forwards and in reverse
 
