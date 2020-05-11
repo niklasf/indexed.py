@@ -36,6 +36,8 @@ Features
 
 * Find the index of a key, e.g. ``d.keys().index("key")``.
 
+* Sort keys in place, e.g. ``d.sort()``.
+
 Excluding those additions the API is the same as the API of
 ``collections.OrderedDict()``. Including:
 

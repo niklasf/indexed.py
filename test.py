@@ -147,6 +147,17 @@ class IndexedOrderedDictTestCase(unittest.TestCase):
         self.assertEqual(d["key-a"], "default-value")
         self.assertEqual(d["key-b"], "default-value")
 
+    def test_sort(self):
+        forwards = indexed.IndexedOrderedDict([("a", 1), ("b", -1)])
+        backwards = indexed.IndexedOrderedDict([("b", -1), ("a", 1)])
+        self.assertNotEqual(forwards, backwards)
+        backwards.sort()
+        self.assertEqual(forwards, backwards)
+        backwards.sort(reverse=True)
+        self.assertNotEqual(forwards, backwards)
+        forwards.sort(key=lambda k: forwards[k])
+        self.assertEqual(forwards, backwards)
+
 
 class IndexedViewTestCase(unittest.TestCase):
     def setUp(self):

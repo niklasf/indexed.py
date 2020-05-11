@@ -107,6 +107,10 @@ class IndexedOrderedDict(dict):
         self[key] = default
         return default
 
+    def sort(self, key=None, reverse=False):
+        """Sort the dictionary by key in place."""
+        self._map.sort(key=key, reverse=reverse)
+
     @reprlib.recursive_repr()
     def __repr__(self):
         """iod.__repr__() <==> repr(iod)"""
