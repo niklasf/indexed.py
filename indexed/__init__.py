@@ -24,15 +24,15 @@ class IndexedOrderedDict(dict):
         self._map = []
         self.__update(*args, **kwds)
 
-    def __setitem__(self, key, value, dict_setitem=dict.__setitem__):
+    def __setitem__(self, key, value, *, __dict_setitem=dict.__setitem__):
         """iod.__setitem__(i, y) <==> iod[i] = y"""
         if key not in self:
             self._map.append(key)
-        dict_setitem(self, key, value)
+        __dict_setitem(self, key, value)
 
-    def __delitem__(self, key, dict_delitem=dict.__delitem__):
+    def __delitem__(self, key, *, __dict_delitem=dict.__delitem__):
         """iod.__delitem__(y) <==> del iod[y]"""
-        dict_delitem(self, key)
+        __dict_delitem(self, key)
         self._map.remove(key)
 
     def __iter__(self):
@@ -107,7 +107,7 @@ class IndexedOrderedDict(dict):
         self[key] = default
         return default
 
-    def sort(self, key=None, reverse=False):
+    def sort(self, *, key=None, reverse=False):
         """Sort the dictionary by key in place."""
         self._map.sort(key=key, reverse=reverse)
 
