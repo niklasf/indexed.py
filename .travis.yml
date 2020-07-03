@@ -4,4 +4,5 @@ python:
   - "3.6"
   - "3.7"
   - "3.8"
-script: python test.py
+  - "3.9-dev"
+script: python test.py --verbose
