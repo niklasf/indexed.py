@@ -70,8 +70,8 @@ class IndexedOrderedDict(dict):
         else:
             self._map.insert(0, key)
 
-    update = __update = collections.MutableMapping.update
-    __ne__ = collections.MutableMapping.__ne__
+    update = __update = collections.abc.MutableMapping.update
+    __ne__ = collections.abc.MutableMapping.__ne__
 
     def keys(self):
         return IndexedKeysView(self)
@@ -154,8 +154,7 @@ class IndexedOrderedDict(dict):
 Dict = IndexedOrderedDict
 
 
-class IndexedKeysView(collections.KeysView):
-
+class IndexedKeysView(collections.abc.KeysView):
     def __getitem__(self, index):
         return self._mapping._map[index]
 
@@ -163,15 +162,13 @@ class IndexedKeysView(collections.KeysView):
         return self._mapping._map.index(x)
 
 
-class IndexedValuesView(collections.ValuesView):
-
+class IndexedValuesView(collections.abc.ValuesView):
     def __getitem__(self, index):
         key = self._mapping._map[index]
         return self._mapping[key]
 
 
-class IndexedItemsView(collections.ItemsView):
-
+class IndexedItemsView(collections.abc.ItemsView):
     def __getitem__(self, index):
         key = self._mapping._map[index]
         return key, self._mapping[key]
