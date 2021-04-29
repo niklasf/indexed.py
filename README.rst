@@ -1,9 +1,9 @@
 indexed.IndexedOrderedDict: a dictionary that is indexed by insertion order
 ===========================================================================
 
-.. image:: https://travis-ci.org/niklasf/indexed.py.png?branch=master
-    :target: https://travis-ci.org/niklasf/indexed.py
-    :alt: build
+.. image:: https://github.com/niklasf/indexed.py/actions/workflows/Test/badge.svg
+    :target: https://github.com/niklasf/indexed.py/actions
+    :alt: test
 
 .. image:: https://badge.fury.io/py/indexed.svg
     :target: https://pypi.python.org/pypi/indexed
