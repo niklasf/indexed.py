@@ -2,7 +2,7 @@
 
 __author__ = "Niklas Fiekas"
 __email__ = "niklas.fiekas@backscattering.de"
-__version__ = "1.1.0"
+__version__ = "1.2.1"
 __license__ = "PSFL"
 
 import collections

@@ -11,7 +11,7 @@ def read(filename):
 
 setuptools.setup(
     name="indexed",
-    version="1.2.0",
+    version="1.2.1",
     author="Niklas Fiekas",
     author_email="niklas.fiekas@backscattering.de",
     description="A dictionary that is indexed by insertion order.",
