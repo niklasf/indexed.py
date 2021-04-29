@@ -6,6 +6,7 @@ __version__ = "1.1.0"
 __license__ = "PSFL"
 
 import collections
+import collections.abc
 import operator
 import reprlib
 
