@@ -12,8 +12,8 @@ indexed.IndexedOrderedDict: a dictionary that is indexed by insertion order
 Introduction
 ------------
 
-``indexed.IndexedOrderedDict`` (alias ``indexed.Dict``) is fully compatible
-with ``collections.OrderedDict`` as of Python 3.10 and can be used as
+``indexed.IndexedOrderedDict`` (alias ``indexed.Dict``) is feature compatible
+with ``collections.OrderedDict`` as of Python 3.11 and can be used as
 a drop in replacement.
 The main difference is that key, value and item views support accessing
 elements by their index.
@@ -40,34 +40,7 @@ Features
 * Sort keys in place, e.g., ``d.sort()``.
 
 Excluding those additions the API is the same as the API of
-``collections.OrderedDict()``. Including:
-
-* Initialization, setting, getting and deleting items
-
-* Iterating forwards and in reverse
-
-* ``d.clear()``
-
-* ``d.popitem(last=True)``
-
-* ``d.move_to_end(key, last=True)``
-
-* ``d.keys()``, ``d.values()``, ``d.items()``
-
-* ``d.pop(key[, default])``
-
-* ``d.setdefault(key, default=None)``
-
-* String representation
-
-* Pickling
-
-* Copying
-
-* Creating from keys
-
-* Comparing order sensitively with other ordered dictionaries or order
-  insensitively with other mappings
+``collections.OrderedDict()``.
 
 Installing
 ----------
