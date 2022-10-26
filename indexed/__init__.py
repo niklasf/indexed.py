@@ -151,6 +151,24 @@ class IndexedOrderedDict(dict):
             return dict.__eq__(self, other) and all(map(operator.eq, self, other))
         return dict.__eq__(self, other)
 
+    def __or__(self, other):
+        if not isinstance(other, dict):
+            return NotImplemented
+        new = self.__class__(self)
+        new.update(other)
+        return new
+
+    def __ror__(self, other):
+        if not isinstance(other, dict):
+            return NotImplemented
+        new = self.__class__(other)
+        new.update(self)
+        return new
+
+    def __ior__(self, other):
+        self.update(other)
+        return self
+
 
 Dict = IndexedOrderedDict
 

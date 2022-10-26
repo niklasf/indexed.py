@@ -158,6 +158,20 @@ class IndexedOrderedDictTestCase(unittest.TestCase):
         forwards.sort(key=lambda k: forwards[k])
         self.assertEqual(forwards, backwards)
 
+    def test_or(self):
+        foo = indexed.IndexedOrderedDict({"foo": 1})
+        bar = {"bar": 1}
+        foo_bar = indexed.IndexedOrderedDict({"foo": 1, "bar": 1})
+        self.assertEqual(foo | foo, foo)
+        self.assertEqual(foo | bar, foo_bar)
+        self.assertNotEqual(bar | foo, foo_bar)
+        self.assertIsInstance(foo | foo, indexed.IndexedOrderedDict)
+        self.assertIsInstance(foo | bar, indexed.IndexedOrderedDict)
+        self.assertIsInstance(bar | foo, indexed.IndexedOrderedDict)
+
+        foo |= bar
+        self.assertEqual(foo, foo_bar)
+
 
 class IndexedViewTestCase(unittest.TestCase):
     def setUp(self):
