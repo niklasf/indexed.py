@@ -13,7 +13,8 @@ Introduction
 ------------
 
 ``indexed.IndexedOrderedDict`` (alias ``indexed.Dict``) is fully compatible
-with ``collections.OrderedDict`` and can be used as a drop in replacement.
+with ``collections.OrderedDict`` as of Python 3.8 and can be used as
+a drop in replacement.
 The main difference is that key, value and item views support accessing
 elements by their index.
 
